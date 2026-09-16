@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   title: "BOTPROOF — Decentralized Proof & Verification Protocol",
   description:
     "Prove It. Verify It. Trust the Chain. A decentralized verification protocol for creating and verifying tamper-evident digital proofs on Botchain.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "BOTPROOF — Decentralized Proof & Verification Protocol",
     description: "Prove It. Verify It. Trust the Chain.",
