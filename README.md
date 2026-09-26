@@ -2,7 +2,7 @@
 
 > **Prove It. Verify It. Trust the Chain.**
 
-A decentralized verification protocol for creating, managing, and verifying tamper-evident digital proofs directly on **Botchain Testnet**.
+A decentralized verification protocol for creating, managing, and verifying tamper-evident digital proofs directly on **BotChain Mainnet**.
 
 BotProof allows universities, academies, hackathons, DAO governance councils, and corporate issuers to issue cryptographic credentials and authenticity certificates without ever exposing or storing private documents on the blockchain. Anyone with the original document or a Proof ID can verify authenticity in seconds without connecting a wallet.
 
@@ -17,7 +17,7 @@ BotProof allows universities, academies, hackathons, DAO governance councils, an
 - [Document Hashing & Privacy Guarantee](#document-hashing--privacy-guarantee)
 - [Smart Contract Specification](#smart-contract-specification)
 - [Tech Stack](#tech-stack)
-- [Botchain Testnet Configuration](#botchain-testnet-configuration)
+- [Botchain Mainnet Configuration](#botchain-mainnet-configuration)
 - [Installation & Setup](#installation--setup)
 - [Running Hardhat Tests](#running-hardhat-tests)
 - [Deployment Guide](#deployment-guide)
@@ -42,7 +42,7 @@ Digital certificates and verification systems today suffer from two main problem
 
 | Traditional Digital Verification | BotProof Protocol |
 | :--- | :--- |
-| Centralized databases subject to tampering or downtime | Immutable on-chain records anchored on Botchain Testnet |
+| Centralized databases subject to tampering or downtime | Immutable on-chain records anchored on BotChain Mainnet |
 | Private documents uploaded to external servers | Client-side SHA-256 calculation via Web Crypto API |
 | Verifiers forced to create accounts or pay fees | Wallet-less public verification accessible to anyone |
 | Revocations hidden or manipulated silently | On-chain revocation logs with permanent cryptographic audit trails |
@@ -65,7 +65,7 @@ Digital certificates and verification systems today suffer from two main problem
                            ↓
           ┌──────────────────────────────────┐
           │     BotProof Smart Contract      │
-          │    Botchain Testnet (ID: 968)    │
+          │    BotChain Mainnet (ID: 968)    │
           └────────────────┬─────────────────┘
                            ↓
              Proof Record (Immutable)
@@ -166,11 +166,11 @@ struct Proof {
 
 ---
 
-## 🌐 Botchain Testnet Configuration
+## 🌐 Botchain Mainnet Configuration
 
 | Parameter | Value |
 | :--- | :--- |
-| **Network Name** | Botchain Testnet |
+| **Network Name** | BotChain Mainnet |
 | **Chain ID** | `968` |
 | **RPC URL** | `https://rpc.bohr.life` |
 | **Block Explorer** | `https://scan.bohr.life` |
@@ -247,7 +247,7 @@ Expected output:
 
 ## 🚀 Deployment Guide
 
-### Deploying to Botchain Testnet
+### Deploying to Botchain Mainnet
 1. Add your funded deployer private key to `.env.local`:
    ```env
    DEPLOYER_PRIVATE_KEY=0x...
@@ -298,7 +298,7 @@ This distinction is crucial: The protocol mathematically guarantees that a docum
 ```text
 Phase 1 (Completed)
 ✓ Client-side document hashing via Web Crypto API
-✓ On-chain proof creation on Botchain Testnet
+✓ On-chain proof creation on BotChain Mainnet
 ✓ Read-only wallet-less verification hub
 ✓ Issuer revocation mechanism
 ✓ QR Code generation and export

@@ -80,7 +80,7 @@ export const WalletButton: React.FC = () => {
               <p className="font-mono text-zinc-200 mt-0.5 break-all select-all text-xs">{address}</p>
               <div className="flex items-center gap-1 text-[11px] text-botchain-400 mt-2 font-medium">
                 <Check size={12} />
-                <span>Botchain Testnet (968)</span>
+                <span>BotChain Mainnet (968)</span>
               </div>
             </div>
 

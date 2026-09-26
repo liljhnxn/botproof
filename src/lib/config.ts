@@ -6,12 +6,12 @@ export const BOTCHAIN_CHAIN_ID = Number(process.env.NEXT_PUBLIC_BOTCHAIN_CHAIN_I
 export const BOTCHAIN_RPC_URL = process.env.NEXT_PUBLIC_BOTCHAIN_RPC_URL || "https://rpc.bohr.life";
 export const BOTCHAIN_EXPLORER_URL = process.env.NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL || "https://scan.bohr.life";
 
-export const botchainTestnet = defineChain({
+export const botchain = defineChain({
   id: BOTCHAIN_CHAIN_ID,
-  name: "Botchain Testnet",
+  name: "BotChain",
   nativeCurrency: {
     decimals: 18,
-    name: "Botchain",
+    name: "BotChain",
     symbol: "BOT",
   },
   rpcUrls: {
@@ -24,22 +24,21 @@ export const botchainTestnet = defineChain({
   },
   blockExplorers: {
     default: {
-      name: "Botchain Explorer",
+      name: "BotChain Explorer",
       url: BOTCHAIN_EXPLORER_URL,
     },
   },
-  testnet: true,
 });
 
 export const wagmiConfig = createConfig({
-  chains: [botchainTestnet],
+  chains: [botchain],
   connectors: [
     injected({
       target: "metaMask",
     }),
   ],
   transports: {
-    [botchainTestnet.id]: http(BOTCHAIN_RPC_URL),
+    [botchain.id]: http(BOTCHAIN_RPC_URL),
   },
   ssr: true,
 });

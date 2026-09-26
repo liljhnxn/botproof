@@ -46,7 +46,7 @@ export const TransactionStatus: React.FC<TransactionStatusProps> = ({
     },
     confirming: {
       label: "Confirming on Botchain",
-      desc: "Waiting for block confirmation on Botchain Testnet...",
+      desc: "Waiting for block confirmation on BotChain...",
       icon: <Loader2 className="text-botchain-400 animate-spin" size={24} />,
     },
     success: {

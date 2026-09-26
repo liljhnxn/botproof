@@ -1,5 +1,5 @@
 import { createPublicClient, http } from "viem";
-import { botchainTestnet, BOTCHAIN_RPC_URL } from "./config";
+import { botchain, BOTCHAIN_RPC_URL } from "./config";
 import { BOTPROOF_ABI, BOTPROOF_ADDRESS } from "@/contracts/botproof";
 
 /**
@@ -7,7 +7,7 @@ import { BOTPROOF_ABI, BOTPROOF_ADDRESS } from "@/contracts/botproof";
  * Allows wallet-less verification without requiring the user to connect MetaMask.
  */
 export const publicClient = createPublicClient({
-  chain: botchainTestnet,
+  chain: botchain,
   transport: http(BOTCHAIN_RPC_URL),
 });
 

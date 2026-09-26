@@ -124,7 +124,7 @@ export default function HomePage() {
 
         <div className="glass-panel rounded-2xl p-6 border border-white/5 flex flex-col">
           <span className="text-xs font-mono uppercase text-zinc-400">Target Blockchain</span>
-          <span className="text-xl font-bold text-white mt-2">Botchain Testnet</span>
+          <span className="text-xl font-bold text-white mt-2">BotChain Mainnet</span>
           <span className="text-[11px] font-mono text-zinc-400 mt-1">Chain ID: {BOTCHAIN_CHAIN_ID}</span>
         </div>
 
@@ -181,7 +181,7 @@ export default function HomePage() {
             </div>
             <h3 className="text-lg font-semibold text-white mb-2">Anchor on Botchain</h3>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              The issuer signs an on-chain transaction registering the cryptographic hash, holder address, proof type, and immutable timestamp on Botchain Testnet.
+              The issuer signs an on-chain transaction registering the cryptographic hash, holder address, proof type, and immutable timestamp on BotChain.
             </p>
           </div>
 

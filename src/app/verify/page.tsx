@@ -159,7 +159,7 @@ export default function VerifyPage() {
               </button>
             </div>
             <p className="text-[11px] text-zinc-500">
-              Directly queries Botchain Testnet for the on-chain proof record. No wallet needed.
+              Directly queries BotChain for the on-chain proof record. No wallet needed.
             </p>
           </form>
 
@@ -243,7 +243,7 @@ export default function VerifyPage() {
                   </div>
                   <h3 className="text-base font-semibold text-white">No Proof Found</h3>
                   <p className="text-xs text-zinc-400 max-w-sm mx-auto">
-                    No active record found for Proof ID #{proofIdInput} on Botchain Testnet. Please check the identifier.
+                    No active record found for Proof ID #{proofIdInput} on BotChain. Please check the identifier.
                   </p>
                 </div>
               )}

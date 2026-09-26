@@ -58,7 +58,7 @@ export default function PublicProofPage() {
           if (result) {
             setProof(result);
           } else {
-            setError(`Proof #${idStr} was not found on Botchain Testnet.`);
+            setError(`Proof #${idStr} was not found on BotChain.`);
           }
         })
         .catch((err) => {
@@ -103,7 +103,7 @@ export default function PublicProofPage() {
           <span>Back to Verification Hub</span>
         </Link>
         <span className="text-[11px] font-mono text-zinc-500">
-          Botchain Testnet (Chain ID: {BOTCHAIN_CHAIN_ID})
+          BotChain (Chain ID: {BOTCHAIN_CHAIN_ID})
         </span>
       </div>
 
@@ -239,7 +239,7 @@ export default function PublicProofPage() {
                   Anchor Blockchain
                 </span>
                 <p className="text-sm font-medium text-white">
-                  Botchain Testnet (968)
+                  BotChain Mainnet (968)
                 </p>
               </div>
 

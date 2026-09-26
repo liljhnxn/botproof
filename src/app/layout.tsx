@@ -44,7 +44,7 @@ export default function RootLayout({
               <div className="flex items-center gap-2">
                 <ShieldCheck size={16} className="text-botchain-400" />
                 <span className="font-semibold text-zinc-300">BOTPROOF PROTOCOL</span>
-                <span>• Botchain Testnet (Chain ID: {BOTCHAIN_CHAIN_ID})</span>
+                <span>• BotChain Mainnet (Chain ID: {BOTCHAIN_CHAIN_ID})</span>
               </div>
 
               <div className="flex items-center gap-6">
@@ -53,6 +53,9 @@ export default function RootLayout({
                 </Link>
                 <Link href="/create-proof" className="hover:text-zinc-300 transition-colors">
                   Issue Proof
+                </Link>
+                <Link href="/whitepaper.html" className="hover:text-zinc-300 transition-colors">
+                  Whitepaper &amp; Deck
                 </Link>
                 <a
                   href={BOTCHAIN_EXPLORER_URL}

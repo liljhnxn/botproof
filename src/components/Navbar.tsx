@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { WalletButton } from "./WalletButton";
-import { Shield, Menu, X, PlusCircle, CheckCircle2, UserCheck, Layers } from "lucide-react";
+import { Shield, Menu, X, PlusCircle, CheckCircle2, UserCheck, Layers, FileText } from "lucide-react";
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -16,6 +16,7 @@ export const Navbar: React.FC = () => {
     { href: "/verify", label: "Verify", icon: CheckCircle2 },
     { href: "/dashboard", label: "My Proofs", icon: UserCheck },
     { href: "/issuer", label: "Issuer Portal", icon: Shield },
+    { href: "/whitepaper.html", label: "Deck & Docs", icon: FileText },
   ];
 
   const isActive = (href: string) => {
@@ -37,7 +38,7 @@ export const Navbar: React.FC = () => {
             <span className="font-bold text-lg tracking-wider text-white flex items-center gap-1.5">
               BOTPROOF
               <span className="text-[10px] font-mono font-medium px-1.5 py-0.2 rounded bg-botchain-500/10 text-botchain-400 border border-botchain-500/20">
-                TESTNET
+                MAINNET
               </span>
             </span>
             <span className="text-[10px] text-zinc-400 tracking-wider font-mono">

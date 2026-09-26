@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOTPROOF — Whitepaper & Pitch Deck | Decentralized Proof Protocol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #040711;
+      --card-bg: rgba(13, 20, 36, 0.75);
+      --card-border: rgba(56, 189, 248, 0.15);
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.25);
+      --secondary: #818cf8;
+      --accent: #34d399;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --code-bg: #090e1a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background lights */
+    .ambient-glow {
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw;
+      height: 50vh;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(129, 140, 248, 0.04) 50%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(4, 7, 17, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.85rem 1.5rem;
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #fff;
+      font-size: 1.1rem;
+      box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .badge-mainnet {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+
+    .logo-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.25rem;
+      border-radius: 12px;
+      gap: 0.25rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.5rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .tab-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+    }
+
+    .action-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(2, 132, 199, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 18px rgba(2, 132, 199, 0.5);
+      filter: brightness(1.1);
+    }
+
+    /* Main Container */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    /* Pitch Deck Presentation Mode */
+    #deck-view {
+      display: none;
+    }
+
+    .deck-container {
+      position: relative;
+      min-height: 620px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide {
+      display: none;
+      animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .slide-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .slide-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 850px;
+    }
+
+    .slide-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .slide-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .slide-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .slide-card:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .slide-card h4 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .slide-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .deck-nav-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .deck-nav-btn:hover:not(:disabled) {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+
+    .deck-nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .dots-container {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .dot.active {
+      width: 28px;
+      background: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Whitepaper View */
+    #whitepaper-view {
+      display: block;
+    }
+
+    .wp-header {
+      text-align: center;
+      padding: 3rem 1rem 3.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 3rem;
+    }
+
+    .wp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+
+    .wp-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .wp-tagline {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .wp-meta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+    }
+
+    .wp-meta-item {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+    }
+
+    .wp-content {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .wp-sidebar {
+      position: sticky;
+      top: 5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      font-size: 0.85rem;
+    }
+
+    .wp-sidebar h5 {
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wp-sidebar nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .wp-sidebar a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.35rem 0.6rem;
+      border-radius: 6px;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .wp-sidebar a:hover {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    .wp-body {
+      color: #cbd5e1;
+      font-size: 1rem;
+    }
+
+    .wp-section {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 6rem;
+    }
+
+    .wp-section h2 {
+      font-size: 1.8rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .wp-section h3 {
+      font-size: 1.25rem;
+      color: #e2e8f0;
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .wp-section p {
+      margin-bottom: 1rem;
+      color: #cbd5e1;
+    }
+
+    .wp-section ul, .wp-section ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .wp-section li {
+      margin-bottom: 0.4rem;
+    }
+
+    .callout {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 4px solid #38bdf8;
+      padding: 1rem 1.25rem;
+      border-radius: 0 12px 12px 0;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .callout strong {
+      color: #38bdf8;
+    }
+
+    .code-block {
+      background: var(--code-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      margin: 1.25rem 0;
+      color: #94a3b8;
+    }
+
+    .code-block .keyword { color: #f43f5e; }
+    .code-block .type { color: #38bdf8; }
+    .code-block .fn { color: #a855f7; }
+    .code-block .comment { color: #64748b; font-style: italic; }
+    .code-block .string { color: #34d399; }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+    }
+
+    .data-table th, .data-table td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .data-table th {
+      background: rgba(15, 23, 42, 0.8);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .data-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Modal for Cloud Storage / Link copy */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-box {
+      background: #090e1a;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-box h3 {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-box p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-textarea {
+      width: 100%;
+      height: 120px;
+      background: #040711;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      padding: 0.75rem;
+      resize: none;
+      margin-bottom: 1rem;
+    }
+
+    /* Print Optimization */
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+      }
+      .ambient-glow, header, .deck-controls, .wp-sidebar, .btn, .nav-tabs, .action-group {
+        display: none !important;
+      }
+      #deck-view, #whitepaper-view {
+        display: block !important;
+      }
+      .wp-content {
+        display: block !important;
+      }
+      .deck-container, .slide-card, .wp-section, .code-block, .data-table {
+        border-color: #ddd !important;
+        background: #fff !important;
+        color: #000 !important;
+        box-shadow: none !important;
+      }
+      .slide-title, .wp-title, .wp-section h2, .wp-section h3 {
+        color: #000 !important;
+        -webkit-text-fill-color: initial !important;
+      }
+      .slide {
+        display: block !important;
+        page-break-after: always;
+        padding: 2rem 0;
+      }
+      .wp-section {
+        page-break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .wp-content {
+        grid-template-columns: 1fr;
+      }
+      .wp-sidebar {
+        display: none;
+      }
+      .wp-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo-group">
+        <div class="logo-icon">🛡️</div>
+        <div class="logo-text">
+          <div class="logo-title">
+            BOTPROOF
+            <span class="badge-mainnet">MAINNET 968</span>
+          </div>
+          <span class="logo-sub">Whitepaper &amp; Pitch Deck</span>
+        </div>
+      </a>
+
+      <!-- View Switcher Tabs -->
+      <div class="nav-tabs">
+        <button id="tab-wp" class="tab-btn active" onclick="switchView('whitepaper')">
+          📑 Technical Whitepaper
+        </button>
+        <button id="tab-deck" class="tab-btn" onclick="switchView('deck')">
+          🖥️ Pitch Deck (Slides)
+        </button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-group">
+        <button class="btn btn-secondary" onclick="openShareModal()">
+          🔗 Copy Link / Info
+        </button>
+        <button class="btn btn-secondary" onclick="window.print()">
+          🖨️ Save as PDF
+        </button>
+        <a href="/" class="btn btn-primary">
+          🚀 Open BotProof dApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================= -->
+    <!-- VIEW 1: TECHNICAL WHITEPAPER                                              -->
+    <!-- ========================================================================= -->
+    <div id="whitepaper-view">
+      <div class="wp-header">
+        <div class="wp-badge">
+          <span>SECURE PROTOCOL SPECIFICATION</span>
+          <span>•</span>
+          <span>VERSION 1.0</span>
+        </div>
+        <h1 class="wp-title">BOTPROOF PROTOCOL</h1>
+        <p class="wp-tagline">
+          Decentralized Proof &amp; Verification Protocol for Issuing and Validating Tamper-Evident Digital Credentials on Botchain.
+        </p>
+        <div class="wp-meta-grid">
+          <div class="wp-meta-item">Chain ID: <strong>968 (Botchain)</strong></div>
+          <div class="wp-meta-item">Contract: <strong>0x5AE46bbbcd57E266D526f3768f1d84536aF5F9d2</strong></div>
+          <div class="wp-meta-item">Standard: <strong>EVM SHA-256 Anchoring</strong></div>
+          <div class="wp-meta-item">Privacy: <strong>100% Client-Side (0 PII)</strong></div>
+        </div>
+      </div>
+
+      <div class="wp-content">
+        <!-- Sticky Sidebar Navigation -->
+        <aside class="wp-sidebar">
+          <h5>Contents</h5>
+          <nav>
+            <ul>
+              <li><a href="#abstract">1. Abstract</a></li>
+              <li><a href="#problem">2. The Problem</a></li>
+              <li><a href="#architecture">3. Protocol Architecture</a></li>
+              <li><a href="#cryptography">4. Client Cryptography</a></li>
+              <li><a href="#smart-contract">5. Smart Contract Engine</a></li>
+              <li><a href="#verification">6. Verification Workflows</a></li>
+              <li><a href="#security">7. Security &amp; Privacy</a></li>
+              <li><a href="#roadmap">8. Roadmap &amp; Ecosystem</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- Body Articles -->
+        <article class="wp-body">
+          <!-- Section 1: Abstract -->
+          <section id="abstract" class="wp-section">
+            <h2>1. Abstract</h2>
+            <p>
+              Traditional digital credential verification relies on centralized databases, fragmented third-party verification portals, and manual background checks prone to tampering, single points of failure, and downtime. Concurrently, attempting to put sensitive identity documents on public blockchains violates fundamental data privacy principles (e.g., GDPR, CCPA) by making personal identifiable information (PII) permanent and public.
+            </p>
+            <p>
+              <strong>BotProof</strong> solves this dilemma by introducing a zero-knowledge, client-side cryptographic anchoring protocol deployed on <strong>BotChain Mainnet</strong>. Using the browser's native Web Crypto API, sensitive documents (academic diplomas, certificates, contracts, hackathon credentials) are hashed locally into an unalterable 32-byte <code>SHA-256</code> digest. Only this mathematical fingerprint—never the document itself—is anchored to the Botchain smart contract.
+            </p>
+            <div class="callout">
+              <strong>Core Guarantee:</strong> Mathematical certainty of document integrity and issuer provenance without ever transmitting or storing confidential files outside the user's local device. Anyone with a proof ID or the original file can verify authenticity in seconds without connecting a Web3 wallet or paying gas fees.
+            </div>
+          </section>
+
+          <!-- Section 2: Problem -->
+          <section id="problem" class="wp-section">
+            <h2>2. The Problem Space</h2>
+            <p>Modern credential verification faces a critical trilemma:</p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Challenge</th>
+                  <th>Traditional Systems</th>
+                  <th>BotProof Protocol</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tamper Resistance</strong></td>
+                  <td>Centralized SQL databases easily hacked or altered internally</td>
+                  <td>Cryptographically immutable state on Botchain EVM</td>
+                </tr>
+                <tr>
+                  <td><strong>Privacy &amp; Compliance</strong></td>
+                  <td>Raw files uploaded to cloud servers or public IPFS</td>
+                  <td>Zero document upload: Client-side SHA-256 fingerprinting</td>
+                </tr>
+                <tr>
+                  <td><strong>Verifier Friction</strong></td>
+                  <td>Requires verifier accounts, paid subscriptions, or API keys</td>
+                  <td>Wallet-less public verification accessible via URL / QR code</td>
+                </tr>
+                <tr>
+                  <td><strong>Revocation Integrity</strong></td>
+                  <td>Silent database updates without verifiable audit trails</td>
+                  <td>On-chain cryptographic revocation events and status flags</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Section 3: Architecture -->
+          <section id="architecture" class="wp-section">
+            <h2>3. Protocol Architecture</h2>
+            <p>
+              BotProof is structured into three decoupled layers to guarantee maximum security, speed, and privacy:
+            </p>
+            <ol>
+              <li>
+                <strong>Client Cryptographic Engine (Browser):</strong> Executes SHA-256 digests in-memory via <code>window.crypto.subtle.digest</code>. Operates asynchronously on arbitrary binary file streams (PDF, PNG, JPG, JSON) without server round-trips.
+              </li>
+              <li>
+                <strong>Botchain Smart Contract Layer (<code>BotProof.sol</code>):</strong> Maintains the state registry of proofs, issuer permissions, holder indexes, revocation statuses, and timestamps on Botchain (Chain ID: 968).
+              </li>
+              <li>
+                <strong>Public Verification Gateway:</strong> Provides instant dual-mode verification:
+                <ul>
+                  <li><em>Proof ID lookup:</em> Reads on-chain state, issuer address, issuance timestamp, and revocation flag.</li>
+                  <li><em>Document Parity Check:</em> Verifiers upload their copy of the file; client calculates hash and executes byte-for-byte cryptographic equality against the blockchain record.</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Section 4: Cryptography -->
+          <section id="cryptography" class="wp-section">
+            <h2>4. Client-Side Cryptography &amp; Privacy</h2>
+            <p>
+              To ensure pre-image resistance and complete data confidentiality, BotProof never transmits raw bytes across the network. The hashing procedure is executed directly on the client:
+            </p>
+            <div class="code-block">
+<span class="comment">// Client-Side Web Crypto API Hashing</span>
+<span class="keyword">async function</span> <span class="fn">generateDocumentHash</span>(file: <span class="type">File</span>): <span class="type">Promise&lt;string&gt;</span> {
+  <span class="keyword">const</span> arrayBuffer = <span class="keyword">await</span> file.<span class="fn">arrayBuffer</span>();
+  <span class="keyword">const</span> hashBuffer = <span class="keyword">await</span> window.crypto.subtle.<span class="fn">digest</span>(<span class="string">"SHA-256"</span>, arrayBuffer);
+  <span class="keyword">const</span> hashArray = <span class="type">Array</span>.<span class="fn">from</span>(<span class="keyword">new</span> <span class="type">Uint8Array</span>(hashBuffer));
+  <span class="keyword">return</span> <span class="string">"0x"</span> + hashArray.<span class="fn">map</span>(b =&gt; b.<span class="fn">toString</span>(16).<span class="fn">padStart</span>(2, <span class="string">"0"</span>)).<span class="fn">join</span>(<span class="string">""</span>);
+}
+            </div>
+            <p>
+              Because SHA-256 is a one-way collision-resistant hash function, observing the 32-byte string on the Botchain public ledger reveals zero information about the student's name, grades, or personal identifiers contained in the document.
+            </p>
+          </section>
+
+          <!-- Section 5: Smart Contract -->
+          <section id="smart-contract" class="wp-section">
+            <h2>5. Smart Contract Engine</h2>
+            <p>
+              The core smart contract <code>BotProof.sol</code> is deployed at <code>0x5AE46bbbcd57E266D526f3768f1d84536aF5F9d2</code> on BotChain Mainnet. It is written in Solidity <code>0.8.24</code> with strict access control and gas-efficient storage slots.
+            </p>
+            <div class="code-block">
+<span class="keyword">struct</span> <span class="type">Proof</span> {
+    <span class="type">uint256</span> id;
+    <span class="type">address</span> issuer;
+    <span class="type">address</span> holder;
+    <span class="type">bytes32</span> documentHash;
+    <span class="type">string</span> proofType;
+    <span class="type">string</span> metadataURI;
+    <span class="type">uint256</span> issuedAt;
+    <span class="type">bool</span> revoked;
+}
+
+<span class="comment">// Core State Functions</span>
+<span class="keyword">function</span> <span class="fn">createProof</span>(<span class="type">address</span> holder, <span class="type">bytes32</span> documentHash, <span class="type">string calldata</span> proofType, <span class="type">string calldata</span> metadataURI) <span class="keyword">external returns</span> (<span class="type">uint256</span>);
+<span class="keyword">function</span> <span class="fn">revokeProof</span>(<span class="type">uint256</span> proofId) <span class="keyword">external</span>;
+<span class="keyword">function</span> <span class="fn">getProof</span>(<span class="type">uint256</span> proofId) <span class="keyword">external view returns</span> (<span class="type">Proof memory</span>);
+<span class="keyword">function</span> <span class="fn">verifyHash</span>(<span class="type">uint256</span> proofId, <span class="type">bytes32</span> fileHash) <span class="keyword">external view returns</span> (<span class="type">bool matchFound</span>, <span class="type">bool isValid</span>);
+            </div>
+            <h3>Custom Errors &amp; Safety Checks</h3>
+            <ul>
+              <li><code>ZeroAddress()</code>: Prevents minting credentials to address(0).</li>
+              <li><code>ZeroHash()</code>: Prevents registering blank or unhashed documents.</li>
+              <li><code>NotIssuer()</code>: Enforces that only the original issuing key can revoke an active proof.</li>
+              <li><code>AlreadyRevoked()</code>: Guarantees idempotency and protects audit log sanity.</li>
+            </ul>
+          </section>
+
+          <!-- Section 6: Verification -->
+          <section id="verification" class="wp-section">
+            <h2>6. Verification Workflows</h2>
+            <p>
+              BotProof prioritizes zero barrier-to-entry for verifiers (employers, universities, compliance officers):
+            </p>
+            <div class="slide-grid-3">
+              <div class="slide-card">
+                <h4>1. By Proof ID</h4>
+                <p>Verifiers query the unique sequence identifier. The system retrieves issuer authenticity, timestamp, and status directly via Botchain RPC.</p>
+              </div>
+              <div class="slide-card">
+                <h4>2. Document Drag &amp; Drop</h4>
+                <p>Verifier drops the PDF into the browser. The client hashes it and compares it against the smart contract record. If 1 byte differs, verification fails.</p>
+              </div>
+              <div class="slide-card">
+                <h4>3. Direct Link &amp; QR Code</h4>
+                <p>Holders receive a shareable <code>/verify/[id]</code> URL and dynamic QR badge for inclusion on resumes, LinkedIn, and portfolios.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 7: Security -->
+          <section id="security" class="wp-section">
+            <h2>7. Security &amp; Privacy Model</h2>
+            <ul>
+              <li><strong>Zero PII Exposure:</strong> No names, IDs, social security numbers, or grade transcripts are stored on-chain.</li>
+              <li><strong>Non-Custodial Architecture:</strong> BotProof never retains user private keys or file backups. Users maintain sovereign ownership of credentials.</li>
+              <li><strong>Pre-image &amp; Second Pre-image Resistance:</strong> SHA-256 ensures an attacker cannot craft a forged document with the same hash.</li>
+              <li><strong>Permanent Audit Log:</strong> Once a proof is revoked, the event is permanently recorded on Botchain, preventing revoked certificates from ever passing verification.</li>
+            </ul>
+          </section>
+
+          <!-- Section 8: Roadmap -->
+          <section id="roadmap" class="wp-section">
+            <h2>8. Roadmap &amp; Future Expansion</h2>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Phase</th>
+                  <th>Timeline</th>
+                  <th>Key Deliverables</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Phase 1 (Live)</strong></td>
+                  <td>Q1 2026</td>
+                  <td>BotChain Mainnet deployment, Web Crypto hashing, wallet-less verification hub, Issuer/Holder portals.</td>
+                </tr>
+                <tr>
+                  <td><strong>Phase 2</strong></td>
+                  <td>Q2 2026</td>
+                  <td>Merkle tree batch proof issuance (10,000+ diplomas in 1 transaction), W3C Verifiable Credentials (DID) integration.</td>
+                </tr>
+                <tr>
+                  <td><strong>Phase 3</strong></td>
+                  <td>Q3 2026</td>
+                  <td>Zero-Knowledge selective disclosure (zk-SNARKs) to prove specific attributes (e.g. age &gt; 21, GPA &gt; 3.5) without revealing the certificate.</td>
+                </tr>
+                <tr>
+                  <td><strong>Phase 4</strong></td>
+                  <td>Q4 2026</td>
+                  <td>Botchain Mainnet deployment, enterprise issuer API gateway, and decentralized identity mobile wallet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </article>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- VIEW 2: INTERACTIVE PITCH DECK                                            -->
+    <!-- ========================================================================= -->
+    <div id="deck-view">
+      <div class="deck-container">
+        
+        <!-- Slide 1: Cover -->
+        <div class="slide active" data-slide="1">
+          <span class="slide-badge">01 / Introduction</span>
+          <h2 class="slide-title">BOTPROOF PROTOCOL</h2>
+          <p class="slide-subtitle">
+            The Decentralized Proof &amp; Verification Protocol on <strong>Botchain</strong>.<br>
+            <em style="color: #38bdf8;">"Prove It. Verify It. Trust the Chain."</em>
+          </p>
+          <div class="slide-grid-3">
+            <div class="slide-card">
+              <h4>🔒 100% Client Privacy</h4>
+              <p>Documents never leave the user's browser. Zero PII or raw documents on-chain.</p>
+            </div>
+            <div class="slide-card">
+              <h4>⚡ Instant Verification</h4>
+              <p>Wallet-less public verification in under 1 second via Proof ID, URL, or QR Code.</p>
+            </div>
+            <div class="slide-card">
+              <h4>⛓️ Built for Botchain</h4>
+              <p>Deployed on BotChain Mainnet (Chain ID: 968) with full smart contract auditability.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Problem -->
+        <div class="slide" data-slide="2">
+          <span class="slide-badge">02 / The Problem</span>
+          <h2 class="slide-title">The Credential Verification Crisis</h2>
+          <p class="slide-subtitle">
+            Billions of dollars are lost annually due to diploma fraud, forged licenses, and cumbersome verification workflows.
+          </p>
+          <div class="slide-grid-3">
+            <div class="slide-card">
+              <h4 style="color: #f87171;">⚠️ Centralized Silos</h4>
+              <p>When issuing portals shut down or APIs change, digital credentials become permanently unverifiable.</p>
+            </div>
+            <div class="slide-card">
+              <h4 style="color: #f87171;">⚠️ Privacy Breaches</h4>
+              <p>Uploading sensitive documents to public blockchains or third-party servers violates GDPR and exposes personal data.</p>
+            </div>
+            <div class="slide-card">
+              <h4 style="color: #f87171;">⚠️ Verifier Friction</h4>
+              <p>Background check services charge hefty fees and require days of manual turnaround time.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Solution -->
+        <div class="slide" data-slide="3">
+          <span class="slide-badge">03 / The Solution</span>
+          <h2 class="slide-title">Cryptographic Anchoring on Botchain</h2>
+          <p class="slide-subtitle">
+            BotProof separates <strong>data storage</strong> from <strong>cryptographic verification</strong>.
+          </p>
+          <div class="slide-grid-2">
+            <div class="slide-card" style="border-color: rgba(52, 211, 153, 0.3);">
+              <h4 style="color: #34d399;">Client-Side Cryptographic Hash</h4>
+              <p>The browser uses native Web Crypto (SHA-256) to generate a unique 32-byte fingerprint. The actual document stays safely on the user's device.</p>
+            </div>
+            <div class="slide-card" style="border-color: rgba(56, 189, 248, 0.3);">
+              <h4 style="color: #38bdf8;">Immutable Blockchain Registry</h4>
+              <p>Only the hash, issuer address, recipient address, and timestamp are written to Botchain. Irreversible, immutable, and tamper-evident.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: How It Works -->
+        <div class="slide" data-slide="4">
+          <span class="slide-badge">04 / Workflow</span>
+          <h2 class="slide-title">How BotProof Works</h2>
+          <p class="slide-subtitle">Three seamless steps from document issuance to public validation.</p>
+          <div class="slide-grid-3">
+            <div class="slide-card">
+              <h4>1. Issue Proof</h4>
+              <p>Authorized issuer selects document &amp; recipient. Browser hashes file instantly and mints on-chain proof via <code>createProof()</code>.</p>
+            </div>
+            <div class="slide-card">
+              <h4>2. Hold &amp; Share</h4>
+              <p>Holder views verified credentials on their dashboard. Shares a 1-click verification link or embedded QR code.</p>
+            </div>
+            <div class="slide-card">
+              <h4>3. Verify (No Wallet)</h4>
+              <p>Anyone verifies authenticity in seconds. Upload the file to verify byte-parity, or check the on-chain status.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Architecture -->
+        <div class="slide" data-slide="5">
+          <span class="slide-badge">05 / Protocol Architecture</span>
+          <h2 class="slide-title">Decoupled &amp; Secure Design</h2>
+          <p class="slide-subtitle">A zero-knowledge, privacy-preserving infrastructure.</p>
+          <div class="code-block" style="font-size: 0.9rem; line-height: 1.4;">
+  [ Document (PDF / Image) ]
+              │
+              ▼ (Native Web Crypto API - Client Browser)
+  [ 0x-prefixed 32-byte SHA-256 Hash ]
+              │
+              ▼ (createProof)
+  [ BotProof Smart Contract ] ──► BotChain Mainnet (ID: 968)
+              │
+              ▼
+  [ Public Verification Hub ] ──► Dual Match: On-chain Record + File Parity Check
+          </div>
+        </div>
+
+        <!-- Slide 6: Market Opportunity -->
+        <div class="slide" data-slide="6">
+          <span class="slide-badge">06 / Target Verticals</span>
+          <h2 class="slide-title">Multi-Billion Dollar Addressable Market</h2>
+          <p class="slide-subtitle">Every sector issuing verifiable attestations needs BotProof.</p>
+          <div class="slide-grid-2">
+            <div class="slide-card">
+              <h4>🎓 Academic &amp; EdTech</h4>
+              <p>Universities, coding bootcamps, and certification platforms issuing tamper-proof diplomas and course completions.</p>
+            </div>
+            <div class="slide-card">
+              <h4>💻 Web3 &amp; Hackathons</h4>
+              <p>Hackathon certificates, governance participation awards, and DAO contributor achievements.</p>
+            </div>
+            <div class="slide-card">
+              <h4>🏢 Corporate &amp; HR</h4>
+              <p>Employment verification, background checks, non-disclosure agreements, and compliance records.</p>
+            </div>
+            <div class="slide-card">
+              <h4>⚖️ Legal &amp; Government</h4>
+              <p>Notarized declarations, identity verifications, and public registry attestations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 7: Competitive Advantages -->
+        <div class="slide" data-slide="7">
+          <span class="slide-badge">07 / Key Moats</span>
+          <h2 class="slide-title">Why BotProof Wins</h2>
+          <p class="slide-subtitle">Engineered specifically to remove all barriers to Web3 verification adoption.</p>
+          <div class="slide-grid-3">
+            <div class="slide-card">
+              <h4>🚀 Wallet-Free Verifier</h4>
+              <p>Employers do not need MetaMask or crypto knowledge. Just click the link or scan the QR code.</p>
+            </div>
+            <div class="slide-card">
+              <h4>🛡️ True Zero-Knowledge</h4>
+              <p>No storage risks, no PII database leaks, and total regulatory compliance with GDPR/CCPA.</p>
+            </div>
+            <div class="slide-card">
+              <h4>🔄 On-Chain Revocation</h4>
+              <p>Issuers can instantly revoke credentials if discovered fraudulent, keeping the trust layer accurate.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 8: Live Smart Contract -->
+        <div class="slide" data-slide="8">
+          <span class="slide-badge">08 / Technical Foundation</span>
+          <h2 class="slide-title">Live &amp; Deployed on Botchain</h2>
+          <p class="slide-subtitle">Fully verified, tested, and active smart contract deployment.</p>
+          <div class="slide-card" style="margin-top: 1rem;">
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; color: #fff;">
+              <strong>Network:</strong> BotChain Mainnet<br>
+              <strong>Chain ID:</strong> 968<br>
+              <strong>Contract Address:</strong> <span style="color: #38bdf8;">0x5AE46bbbcd57E266D526f3768f1d84536aF5F9d2</span><br>
+              <strong>RPC Endpoint:</strong> https://rpc.bohr.life<br>
+              <strong>Block Explorer:</strong> https://scan.bohr.life
+            </p>
+          </div>
+          <div class="slide-grid-2" style="margin-top: 1rem;">
+            <div class="slide-card">
+              <h4>⚡ Hardhat Test Suite</h4>
+              <p>100% automated test coverage covering proof creation, holder queries, revocation rights, and error states.</p>
+            </div>
+            <div class="slide-card">
+              <h4>💻 Modern Web Stack</h4>
+              <p>Next.js 14 App Router, TypeScript, Ethers.js v6, TailwindCSS, and Lucide React.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 9: Roadmap -->
+        <div class="slide" data-slide="9">
+          <span class="slide-badge">09 / Future Growth</span>
+          <h2 class="slide-title">Strategic Roadmap</h2>
+          <p class="slide-subtitle">Expanding from single proof anchoring to an enterprise credential ecosystem.</p>
+          <div class="slide-grid-2">
+            <div class="slide-card">
+              <h4>Q1 2026 — Core Protocol (Complete)</h4>
+              <p>Live deployment on BotChain Mainnet, client-side Web Crypto hashing, verification portal, and issuer tools.</p>
+            </div>
+            <div class="slide-card">
+              <h4>Q2 2026 — Merkle Batching &amp; DID</h4>
+              <p>Batch issuance of 10,000+ certificates in a single Merkle root, plus W3C Verifiable Credentials support.</p>
+            </div>
+            <div class="slide-card">
+              <h4>Q3 2026 — Zero-Knowledge SNARKs</h4>
+              <p>Selective disclosure proofs: prove certificate validity or specific attributes without revealing full details.</p>
+            </div>
+            <div class="slide-card">
+              <h4>Q4 2026 — Mainnet &amp; Enterprise SDK</h4>
+              <p>Botchain Mainnet launch, turnkey REST/GraphQL API for institutional enterprise integrations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 10: Conclusion -->
+        <div class="slide" data-slide="10">
+          <span class="slide-badge">10 / Conclusion</span>
+          <h2 class="slide-title">Prove It. Verify It. Trust the Chain.</h2>
+          <p class="slide-subtitle">
+            BotProof is ready to establish the trust layer for digital authenticity on Botchain.
+          </p>
+          <div class="slide-grid-3">
+            <div class="slide-card">
+              <h4>🔗 Explorer</h4>
+              <p>Inspect all on-chain transactions on Botchain block explorer.</p>
+            </div>
+            <div class="slide-card">
+              <h4>⚡ Live dApp</h4>
+              <p>Create and verify proofs live today on BotChain Mainnet.</p>
+            </div>
+            <div class="slide-card">
+              <h4>📄 PDF Export</h4>
+              <p>Click "Save as PDF" to generate an executive report for submission.</p>
+            </div>
+          </div>
+          <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+            <a href="/" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1rem;">
+              🚀 Launch BotProof Application
+            </a>
+            <button class="btn btn-secondary" onclick="window.print()" style="padding: 0.75rem 1.5rem; font-size: 1rem;">
+              🖨️ Export PDF Version
+            </button>
+          </div>
+        </div>
+
+        <!-- Controls Footer -->
+        <div class="deck-controls">
+          <button id="prev-btn" class="deck-nav-btn" onclick="prevSlide()" disabled>
+            ← Previous
+          </button>
+          <div class="dots-container" id="dots-container"></div>
+          <button id="next-btn" class="deck-nav-btn" onclick="nextSlide()">
+            Next →
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Share / Cloud Storage Modal -->
+  <div class="modal-overlay" id="share-modal" onclick="closeShareModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3>📋 Project Links &amp; Pitch Info</h3>
+      <p>
+        Use the details below for your grant, hackathon, or cloud storage submission:
+      </p>
+      <textarea class="modal-textarea" id="share-text" readonly>
+Project: BOTPROOF (Decentralized Proof & Verification Protocol)
+Tagline: Prove It. Verify It. Trust the Chain.
+Network: BotChain Mainnet (Chain ID: 968)
+Smart Contract: 0x5AE46bbbcd57E266D526f3768f1d84536aF5F9d2
+Explorer: https://scan.bohr.life/address/0x5AE46bbbcd57E266D526f3768f1d84536aF5F9d2
+Whitepaper & Pitch Deck: http://localhost:3007/whitepaper.html
+Live dApp: http://localhost:3007
+Features: 100% Client-Side SHA-256 Hashing, Zero PII on-chain, Wallet-less Public Verification, On-Chain Revocation.</textarea>
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+        <button class="btn btn-secondary" onclick="closeShareModal()">Close</button>
+        <button class="btn btn-primary" onclick="copyShareText()">Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // View Switcher
+    function switchView(view) {
+      const wpView = document.getElementById('whitepaper-view');
+      const deckView = document.getElementById('deck-view');
+      const tabWp = document.getElementById('tab-wp');
+      const tabDeck = document.getElementById('tab-deck');
+
+      if (view === 'deck') {
+        wpView.style.display = 'none';
+        deckView.style.display = 'block';
+        tabWp.classList.remove('active');
+        tabDeck.classList.add('active');
+      } else {
+        wpView.style.display = 'block';
+        deckView.style.display = 'none';
+        tabWp.classList.add('active');
+        tabDeck.classList.remove('active');
+      }
+    }
+
+    // Deck Logic
+    let currentSlide = 1;
+    const totalSlides = 10;
+
+    function initDots() {
+      const container = document.getElementById('dots-container');
+      container.innerHTML = '';
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 1 ? ' active' : '');
+        dot.onclick = () => goToSlide(i);
+        container.appendChild(dot);
+      }
+    }
+
+    function updateDeck() {
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach((slide) => {
+        slide.classList.toggle('active', parseInt(slide.getAttribute('data-slide')) === currentSlide);
+      });
+
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx + 1 === currentSlide);
+      });
+
+      document.getElementById('prev-btn').disabled = currentSlide === 1;
+      document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateDeck();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateDeck();
+      }
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      updateDeck();
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (document.getElementById('deck-view').style.display === 'block') {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        }
+      }
+    });
+
+    // Modal
+    function openShareModal() {
+      document.getElementById('share-modal').style.display = 'flex';
+    }
+
+    function closeShareModal() {
+      document.getElementById('share-modal').style.display = 'none';
+    }
+
+    function copyShareText() {
+      const textarea = document.getElementById('share-text');
+      textarea.select();
+      navigator.clipboard.writeText(textarea.value);
+      alert('Project details copied to clipboard!');
+    }
+
+    initDots();
+  </script>
+</body>
+</html>

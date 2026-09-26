@@ -1,5 +1,5 @@
 // Automatically generated deployment configuration
-export const BOTPROOF_ADDRESS = "0x3343B83c9b2042EE3eDccfa431406D3cE752A37C" as const;
+export const BOTPROOF_ADDRESS = "0x5AE46bbbcd57E266D526f3768f1d84536aF5F9d2" as const;
 
 export const BOTPROOF_ABI = [
   {
