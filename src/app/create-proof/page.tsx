@@ -112,7 +112,7 @@ export default function CreateProofPage() {
     }
 
     if (chainId !== BOTCHAIN_CHAIN_ID) {
-      setFormError("You must switch to BotChain (Chain ID 968) before submitting.");
+      setFormError(`You must switch to BotChain (Chain ID ${BOTCHAIN_CHAIN_ID}) before submitting.`);
       return;
     }
 
@@ -198,7 +198,7 @@ export default function CreateProofPage() {
         <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300 flex items-center justify-between gap-4">
           <div>
             <p className="font-semibold">Wrong Network Detected</p>
-            <p className="text-zinc-400">Please switch your wallet network to BotChain (Chain ID 968).</p>
+            <p className="text-zinc-400">Please switch your wallet network to BotChain (Chain ID {BOTCHAIN_CHAIN_ID}).</p>
           </div>
           <button
             type="button"

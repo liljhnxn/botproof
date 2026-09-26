@@ -18,7 +18,7 @@ export async function resolveIdentity(address: string): Promise<IdentityRecord> 
     return { address: "", domainName: null, avatarUrl: null, isRegistered: false };
   }
 
-  // Future implementation will query the BotNS registry contract on Botchain (Chain ID: 968)
+  // Future implementation will query the BotNS registry contract on Botchain (Chain ID: 677)
   // Currently returns clean un-faked fallback without inventing fake names.
   return {
     address,

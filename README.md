@@ -65,7 +65,7 @@ Digital certificates and verification systems today suffer from two main problem
                            ↓
           ┌──────────────────────────────────┐
           │     BotProof Smart Contract      │
-          │    BotChain Mainnet (ID: 968)    │
+          │    BotChain Mainnet (ID: 677)    │
           └────────────────┬─────────────────┘
                            ↓
              Proof Record (Immutable)
@@ -171,16 +171,16 @@ struct Proof {
 | Parameter | Value |
 | :--- | :--- |
 | **Network Name** | BotChain Mainnet |
-| **Chain ID** | `968` |
-| **RPC URL** | `https://rpc.bohr.life` |
-| **Block Explorer** | `https://scan.bohr.life` |
+| **Chain ID** | `677` |
+| **RPC URL** | `https://rpc.botchain.ai` |
+| **Block Explorer** | `https://scan.botchain.ai` |
 | **Native Currency** | BOT (18 Decimals) |
 
 ### Environment Variables (`.env.local`)
 ```env
-NEXT_PUBLIC_BOTCHAIN_CHAIN_ID=968
-NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.bohr.life
-NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL=https://scan.bohr.life
+NEXT_PUBLIC_BOTCHAIN_CHAIN_ID=677
+NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.botchain.ai
+NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL=https://scan.botchain.ai
 
 NEXT_PUBLIC_BOTPROOF_CONTRACT_ADDRESS=
 DEPLOYER_PRIVATE_KEY=

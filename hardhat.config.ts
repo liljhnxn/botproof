@@ -24,8 +24,8 @@ const config: HardhatUserConfig = {
       chainId: 31337,
     },
     botchain: {
-      url: process.env.NEXT_PUBLIC_BOTCHAIN_RPC_URL || "https://rpc.bohr.life",
-      chainId: Number(process.env.NEXT_PUBLIC_BOTCHAIN_CHAIN_ID) || 968,
+      url: process.env.NEXT_PUBLIC_BOTCHAIN_RPC_URL || "https://rpc.botchain.ai",
+      chainId: Number(process.env.NEXT_PUBLIC_BOTCHAIN_CHAIN_ID) || 677,
       accounts: process.env.DEPLOYER_PRIVATE_KEY ? [process.env.DEPLOYER_PRIVATE_KEY] : [],
     },
   },
@@ -36,10 +36,10 @@ const config: HardhatUserConfig = {
     customChains: [
       {
         network: "botchain",
-        chainId: 968,
+        chainId: 677,
         urls: {
-          apiURL: "https://scan.bohr.life/api",
-          browserURL: "https://scan.bohr.life",
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai",
         },
       },
     ],

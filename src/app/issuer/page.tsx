@@ -95,7 +95,7 @@ export default function IssuerDashboardPage() {
 
   const handleRevokeProof = async (proofId: bigint) => {
     if (chainId !== BOTCHAIN_CHAIN_ID) {
-      setRevokeError("Please switch to BotChain (Chain ID 968).");
+      setRevokeError(`Please switch to BotChain (Chain ID ${BOTCHAIN_CHAIN_ID}).`);
       return;
     }
 

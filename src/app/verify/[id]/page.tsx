@@ -239,7 +239,7 @@ export default function PublicProofPage() {
                   Anchor Blockchain
                 </span>
                 <p className="text-sm font-medium text-white">
-                  BotChain Mainnet (968)
+                  BotChain Mainnet (677)
                 </p>
               </div>
 
