@@ -17,6 +17,7 @@ import {
   Search,
   ArrowRight,
   ShieldAlert,
+  ExternalLink,
 } from "lucide-react";
 
 export default function HolderDashboardPage() {
@@ -99,9 +100,22 @@ export default function HolderDashboardPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-botchain-400 mb-1">
-            <UserCheck size={14} />
-            <span>Holder Identity</span>
+          <div className="flex items-center gap-3 text-xs font-mono text-botchain-400 mb-1">
+            <span className="flex items-center gap-1.5">
+              <UserCheck size={14} />
+              <span>Holder Identity</span>
+            </span>
+            <span className="text-zinc-600">•</span>
+            <a
+              href="https://botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-botchain-400 hover:text-botchain-300 transition-colors"
+              title="Official BotChain Website"
+            >
+              <span>botchain.ai</span>
+              <ExternalLink size={10} />
+            </a>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white">My Proofs & Credentials</h1>
           <p className="text-xs text-zinc-400 font-mono mt-1">

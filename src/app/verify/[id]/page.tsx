@@ -238,9 +238,21 @@ export default function PublicProofPage() {
                   <Layers size={14} className="text-botchain-400" />
                   Anchor Blockchain
                 </span>
-                <p className="text-sm font-medium text-white">
-                  BotChain Mainnet (677)
-                </p>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium text-white">
+                    BotChain Mainnet (677)
+                  </p>
+                  <a
+                    href="https://botchain.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-botchain-400 hover:text-botchain-300 font-medium inline-flex items-center gap-1 transition-colors"
+                    title="Official BotChain Website"
+                  >
+                    <span>botchain.ai</span>
+                    <ExternalLink size={11} />
+                  </a>
+                </div>
               </div>
 
               {/* Document Hash Box */}
@@ -283,10 +295,23 @@ export default function PublicProofPage() {
 
             {/* Contract info bar */}
             {contractAddress && (
-              <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-zinc-400">
-                <span className="font-mono">
-                  Contract: {formatAddress(contractAddress)}
-                </span>
+              <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-400">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono">
+                    Contract: {formatAddress(contractAddress)}
+                  </span>
+                  <span>•</span>
+                  <a
+                    href="https://botchain.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-botchain-400 hover:text-botchain-300 inline-flex items-center gap-1 transition-colors font-medium"
+                    title="Official BotChain Website"
+                  >
+                    <span>botchain.ai</span>
+                    <ExternalLink size={11} />
+                  </a>
+                </div>
                 <a
                   href={getExplorerAddressUrl(contractAddress)}
                   target="_blank"

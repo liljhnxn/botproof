@@ -183,9 +183,22 @@ export default function CreateProofPage() {
     <div className="max-w-3xl mx-auto py-4 space-y-8">
       {/* Header */}
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-botchain-500/10 text-botchain-400 text-xs font-mono border border-botchain-500/20">
-          <Sparkles size={13} />
-          <span>On-Chain Attestation</span>
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-botchain-500/10 text-botchain-400 text-xs font-mono border border-botchain-500/20">
+            <Sparkles size={13} />
+            <span>On-Chain Attestation</span>
+          </div>
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-botchain-500/10 hover:bg-botchain-500/20 text-botchain-400 text-xs font-mono border border-botchain-500/25 transition-colors group cursor-pointer"
+            title="Official BotChain Website (https://botchain.ai)"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-botchain-400 animate-pulse" />
+            <span>botchain.ai</span>
+            <ExternalLink size={10} className="opacity-70 group-hover:opacity-100" />
+          </a>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white">Create a Proof</h1>
         <p className="text-xs sm:text-sm text-zinc-400 max-w-lg mx-auto">

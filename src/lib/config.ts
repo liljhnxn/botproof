@@ -6,6 +6,7 @@ import { injected } from "wagmi/connectors";
 export const BOTCHAIN_CHAIN_ID = 677;
 export const BOTCHAIN_RPC_URL = "https://rpc.botchain.ai";
 export const BOTCHAIN_EXPLORER_URL = "https://scan.botchain.ai";
+export const BOTCHAIN_WEBSITE_URL = "https://botchain.ai";
 
 export const botchain = defineChain({
   id: BOTCHAIN_CHAIN_ID,

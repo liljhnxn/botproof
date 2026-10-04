@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useAccount, useConnect, useDisconnect, useBalance, useSwitchChain } from "wagmi";
 import { BOTCHAIN_CHAIN_ID } from "@/lib/config";
 import { formatAddress } from "@/lib/format";
-import { Wallet, LogOut, AlertTriangle, ChevronDown, Check } from "lucide-react";
+import { Wallet, LogOut, AlertTriangle, ChevronDown, Check, ExternalLink } from "lucide-react";
 
 export const WalletButton: React.FC = () => {
   const { address, isConnected, chainId } = useAccount();
@@ -78,10 +78,19 @@ export const WalletButton: React.FC = () => {
             <div className="p-3 border-b border-white/5">
               <p className="text-zinc-500 text-[11px]">Connected Wallet</p>
               <p className="font-mono text-zinc-200 mt-0.5 break-all select-all text-xs">{address}</p>
-              <div className="flex items-center gap-1 text-[11px] text-botchain-400 mt-2 font-medium">
-                <Check size={12} />
-                <span>BotChain Mainnet (677)</span>
-              </div>
+              <a
+                href="https://botchain.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between text-[11px] text-botchain-400 hover:text-botchain-300 mt-2 font-medium transition-colors group cursor-pointer"
+                title="BotChain Mainnet - Visit botchain.ai"
+              >
+                <span className="flex items-center gap-1">
+                  <Check size={12} />
+                  <span>BotChain Mainnet (677)</span>
+                </span>
+                <ExternalLink size={10} className="opacity-70 group-hover:opacity-100" />
+              </a>
             </div>
 
             <button

@@ -172,13 +172,15 @@ struct Proof {
 | :--- | :--- |
 | **Network Name** | BotChain Mainnet |
 | **Chain ID** | `677` |
+| **Official Website** | [`https://botchain.ai`](https://botchain.ai) |
 | **RPC URL** | `https://rpc.botchain.ai` |
-| **Block Explorer** | `https://scan.botchain.ai` |
+| **Block Explorer** | [`https://scan.botchain.ai`](https://scan.botchain.ai) |
 | **Native Currency** | BOT (18 Decimals) |
 
 ### Environment Variables (`.env.local`)
 ```env
 NEXT_PUBLIC_BOTCHAIN_CHAIN_ID=677
+NEXT_PUBLIC_BOTCHAIN_WEBSITE_URL=https://botchain.ai
 NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.botchain.ai
 NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL=https://scan.botchain.ai
 
